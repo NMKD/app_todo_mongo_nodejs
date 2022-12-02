@@ -1,0 +1,38 @@
+<h2>Todos page</h2>
+
+{{#if todos.length}}
+
+<ul class="list-group">
+
+    {{#each todos}}
+    <br>
+    <li class="list-group-item">
+            <form action="/complete" method="POST" class="d-flex justify-content-between align-items-center">
+                    {{#if completed}}
+                    <div class="p-2">
+                        <input class="form-check-input me-1" type="checkbox" checked name="on">
+                        <span class="completed">{{title}}</span>
+                    </div>
+                    <div class="p-2">
+                        <button type="submit" class="btn btn-sm btn-outline-success">SAVE</button>
+                    </div>
+                    {{else}}
+                    <div class="p-2">
+                        <input class="form-check-input me-1" type="checkbox" name="on">
+                        <span>{{title}}</span>
+                    </div>
+                    <div class="p-2">
+                        <button type="submit" class="btn btn-sm btn-outline-success align-self-end">SAVE</button>
+                    </div>
+                    {{/if}}
+                    <input type="hidden" value="{{_id}}" name="id">
+            </form>
+    </li>
+
+    {{/each}}
+
+</ul>
+
+{{else}}
+<p>No todos!</p>
+{{/if}}
